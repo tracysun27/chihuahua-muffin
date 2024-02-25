@@ -5,9 +5,11 @@
     <title>Flask Tutorial</title>
   </head>
   <body>
-    <h1> Are you a Chihuahua or a Muffin? </h1>
+    <h1 style="font-family: Comic Sans MS;">Are you a Chihuahua or a Muffin? </h1>
+    <h2 style="font-family: Comic Sans MS;">Take a photo!</h2>
+    <img id="video_feed" src="{{ url_for('video_feed') }}" width="1137" height="640">
     <form action="/capture" method="post">
-      <button type="submit">Capture Image</button>
+      <button style="font-family: Comic Sans MS;" type="submit">Capture Image</button>
     </form>
   </body>
 </html>
