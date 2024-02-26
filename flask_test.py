@@ -14,20 +14,27 @@
 #     return render_template("home.html")
 
 from flask import Flask, render_template, Response
+import os
 import cv2
 import datetime as dt
 
 app = Flask(__name__)
+
+try:
+    os.mkdir('./images')
+except OSError as error:
+    pass
 
 # Function to capture and save an image
 def capture_image():
     vid = cv2.VideoCapture(0) 
     ret, frame = vid.read()
     img_name = f'captured_image_{dt.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}.jpg'
-    cv2.imwrite(img_name, frame)
+    cv2.imwrite(f"./images/{img_name}", frame)
     vid.release() 
     cv2.destroyAllWindows()
     return img_name
+
 
 # Function to generate frames from webcam feed
 def generate_frames():
@@ -42,6 +49,7 @@ def generate_frames():
             yield (b'--frame\r\n'
                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
+
 @app.route('/')
 def home():
     return render_template("home.html")
@@ -55,7 +63,7 @@ def capture():
 def video_feed():
     return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
-@app.route('/results')
+@app.route('/results_page')
 def results():
     return render_template("results.html")
 
