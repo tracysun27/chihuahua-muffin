@@ -36,6 +36,19 @@
         background-color: rgba(239, 208, 228, 0.7); /* Set background color for h1 with opacity */
         padding: 10px; /* Add padding to the title */
       }
+      a {
+        font-family: Comic Sans MS; /* Set font family for the link */
+        font-size: 18px; /* Set font size for the link */
+        color: rgb(243, 29, 158); /* Set text color for the link */
+        background-color: rgba(239, 208, 228, 0.7);
+        text-decoration: underline; 
+        display: block; /* Make the link a block element to control its placement */
+        margin-top: 10px; /* Add margin to the top to separate it from other elements */
+      }
+      a:hover {
+        color: rgb(146, 9, 92); /* Change text color on hover */
+      }
+
     </style>
   </head>
   <body>
@@ -45,5 +58,6 @@
     <form action="/capture" method="post">
       <button type="submit">Capture Image!</button>
     </form>
+    <a href="{{ url_for('results') }}">View Results</a>
   </body>
 </html>
