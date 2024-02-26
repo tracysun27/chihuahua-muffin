@@ -3,14 +3,47 @@
   <head>
     <meta charset="utf-8">
     <title>Flask Tutorial</title>
+    <style>
+      /* CSS styles for center alignment and button customization */
+      body {
+        text-align: center; /* Center align the content */
+        background-image: url('https://cdn-media-1.freecodecamp.org/images/1*bt-E2YcPafjiPbZFDMMmNQ.jpeg'); /* Set background image */
+        background-size: cover; /* Cover the entire background */
+        background-repeat: repeat; /* Prevent background image from repeating */
+      }
+      button {
+        font-family: Comic Sans MS; /* Set font family for the button */
+        font-size: 20px; /* Increase font size */
+        color: rgb(146, 9, 92);
+        padding: 10px 20px; /* Increase padding to make the button bigger */
+        background-color: lavenderblush; /* Change background color of the button */
+        border: none; /* Remove border */
+        cursor: pointer; /* Add cursor pointer on hover */
+      }
+      button:hover {
+        background-color: violet; /* Change background color on hover */
+      }
+      h1 {
+        font-family: Comic Sans MS; /* Set font family for h1 */
+        /* font-size: 36px; */ /* Set font size for h1 */
+        color: rgb(243, 29, 158); /* Set text color for h1 */
+        background-color: rgba(239, 208, 228, 0.7); /* Set background color for h1 with opacity */
+        padding: 10px; /* Add padding to the title */
+      }
+      h2 {
+        font-family: Comic Sans MS; /* Set font family for h1 */
+        color: rgb(243, 29, 158); /* Set text color for h1 */
+        background-color: rgba(239, 208, 228, 0.7); /* Set background color for h1 with opacity */
+        padding: 10px; /* Add padding to the title */
+      }
+    </style>
   </head>
   <body>
-    <h1 style="font-family: Comic Sans MS;">Are you a Chihuahua or a Muffin? </h1>
-    <h2 style="font-family: Comic Sans MS;">Take a photo!</h2>
-    <img id="video_feed" src="{{ url_for('video_feed') }}" width="1137" height="640">
+    <h1>Are you a Chihuahua or a Muffin? </h1>
+    <h2>Take a photo!</h2>
+    <img id="video_feed" src="{{ url_for('video_feed') }}" width="711" height="400">
     <form action="/capture" method="post">
-      <button style="font-family: Comic Sans MS;" type="submit">Capture Image</button>
+      <button type="submit">Capture Image!</button>
     </form>
-    <a href="{{ url_for('results') }}">View Results</a>
   </body>
 </html>
