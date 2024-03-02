@@ -13,7 +13,7 @@
 # def home():
 #     return render_template("home.html")
 
-from flask import Flask, render_template, Response
+from flask import Flask, render_template, Response, redirect, url_for, request
 import os
 import cv2
 import datetime as dt
@@ -30,7 +30,7 @@ def capture_image():
     vid = cv2.VideoCapture(0) 
     ret, frame = vid.read()
     img_name = f'captured_image_{dt.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}.jpg'
-    cv2.imwrite(f"./images/{img_name}", frame)
+    cv2.imwrite(f"./static/{img_name}", frame)
     vid.release() 
     cv2.destroyAllWindows()
     return img_name
@@ -57,7 +57,7 @@ def home():
 @app.route('/capture', methods=['POST'])
 def capture():
     img_name = capture_image()
-    return f"Image saved as {img_name}"
+    return redirect(url_for('results', img_name=img_name))
 
 @app.route('/video_feed')
 def video_feed():
@@ -65,7 +65,8 @@ def video_feed():
 
 @app.route('/results_page')
 def results():
-    return render_template("results.html")
+    img_name = request.args.get('img_name')  
+    return render_template("results.html", img_name=img_name)
 
 if __name__ == '__main__':
     app.run(debug=True)
