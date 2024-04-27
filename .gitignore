@@ -50,7 +50,8 @@ private# Created by https://www.toptal.com/developers/gitignore/api/visualstudio
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -267,3 +268,4 @@ pyrightconfig.json
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,python,macos
+static/
